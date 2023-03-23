@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2018",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "resolveJsonModule": true,
+    "types": ["node", "jest"],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "checkJs": true
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "typingOptions": {
+    "enableAutoDiscovery": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
