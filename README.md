@@ -94,3 +94,54 @@ Check out the ```tools.ts``` file
 - Add more env vars / logic
 - Add proper typing / ts support
 - Improve documentation
+
+# Bonus: Basic part of challenge
+
+### Improve the following code:
+
+```
+connectToDatabase()
+.then((database)  => {
+    return getUser(database, 'email@email.com')
+    .then(user => {
+        return getUserSettings(database, user.id)
+        .then(settings => {
+            return setRole(database, user.id, "ADMIN")
+            .then(success => {
+                return notifyUser(user.id, "USER_ROLE_UPDATED")
+                .then(success => {
+                    return notifyAdmins("USER_ROLE_UPDATED")
+                })
+            })
+        })
+    })
+})
+```
+
+### Improved version:
+
+```
+try {
+    const database = await connectToDatabase();
+    const user = await getUser(database, 'email@email.com');
+    const settings = await getUserSettings(database, user.id);
+    const success = await setRole(database, user.id, "ADMIN");
+    
+    if (success) {
+      const userNotified = await notifyUser(user.id, "USER_ROLE_UPDATED");
+      if (userNotified) {
+        await notifyAdmins("USER_ROLE_UPDATED");
+      } else {
+        throw new Error("Failed to notify user.");
+      }
+    } else {
+      throw new Error("Failed to set user role.");
+    }
+} catch (error) {
+	console.error(error); // or some different error processing
+}
+```
+
+Changes and reasoning:
+- Replaced the .then() chains with await keywords, which makes the code more readable and easier to understand.
+- Added a try...catch block (and some errors with meaningful messages just as a showcase) to handle any errors that may occur during the execution of the asynchronous code.
