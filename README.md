@@ -87,6 +87,8 @@ npm run migrate:down
 types:check
 ```
 
+## Bonus stuff (from the challenge)
+Check out the ```tools.ts``` file
 
 ## TODOs
 - Add more env vars / logic
