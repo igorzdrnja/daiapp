@@ -87,7 +87,7 @@ npm run migrate:down
 types:check
 ```
 
-## Bonus stuff (from the challenge)
+## Bonus stuff (from the practical challenge)
 Check out the ```tools.ts``` file
 
 ## TODOs
